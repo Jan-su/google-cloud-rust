@@ -411,7 +411,7 @@ impl Source for RefresherSource {
         if cur_token.is_validish() {
             return Ok(cur_token.clone());
         }
-        let new_token = self.source.token().await.unwrap();
+        let new_token = self.source.token().await?;
         (*cur_token).value = new_token.value;
         (*cur_token).expires = new_token.expires;
         return Ok(cur_token.clone());
